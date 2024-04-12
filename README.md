@@ -1,1 +1,0 @@
-# BiGOR_2.0_TextEditor

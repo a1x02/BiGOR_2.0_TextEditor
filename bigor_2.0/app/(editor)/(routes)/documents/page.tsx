@@ -7,13 +7,16 @@ import { toast } from "sonner";
 import { PlusCircle } from "lucide-react";
 import Image from "next/image";
 import { api } from "@/convex/_generated/api";
+import { useRouter } from "next/navigation";
 
 const DocumentsPage = () => {
 const { user } = useUser();
 const create = useMutation(api.documents.create);
+const router = useRouter();
 
 const onCreate = () => {
     const promise = create({ title: "Без имени" })
+    .then((documentId) => router.push(`/documents/${documentId}`));
 
     toast.promise(promise, {
         loading: "Создаем новый документ...",

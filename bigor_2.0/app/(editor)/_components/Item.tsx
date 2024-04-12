@@ -52,6 +52,7 @@ export const Item = ({
         event.stopPropagation();
         if (!id) return;
         const promise = archive({ id })
+        .then(() => router.push("/documents"));
 
         toast.promise(promise, {
             loading: "Архивируем документ...",
@@ -117,7 +118,7 @@ export const Item = ({
                     {documentIcon}
                 </div>
             ) : (
-                <Icon className="shrink-0 h-[18px] mr-2 text-muted-foreground" />
+                <Icon className="shrink-0 w-[18px] h-[18px] mr-2 text-muted-foreground" />
             )}
             <span className="truncate">
                 {label}
